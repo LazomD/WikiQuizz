@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WikiQuizz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> </meta>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+           rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <!-- Optional theme -->
+
+    <!-- Latest compiled and minified JavaScript -->
+</head>
+<body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="/">WikiQuizz</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Bienvenue sur le WikiQuizz</h1>
+        <p th:if="${@data.getPageList().size() != 0}" class="lead">Vous avez <strong><span th:text="${@data.getPageList().size()}"></span></strong> articles à réviser !</p>
+        <p th:if="${@data.getPageList().size() != 0}">
+            <a class="btn btn-lg btn-primary" href="/question" role="button">Start</a>
+        </p>
+        <p th:if="${@data.getPageList().size() == 0}" class="lead">Vous n'avez pas d'article à réviser pour l'instant!</p>
+    </div>
+
+    <img src="https://source.unsplash.com/9l_326FISzk" class="img-responsive" style="display: block;"/>
+</div><!-- /.container -->
+</body>
+</html>

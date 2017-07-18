@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WikiQuizz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> </meta>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <!-- Optional theme -->
+
+    <!-- Latest compiled and minified JavaScript -->
+</head>
+<body>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="/">WikiQuizz</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h3>Evaluation :</h3>
+        <div class="bd-example" data-example-id="">
+            <a href="/question?delai=1j" class="btn btn-lg btn-block btn-danger" role="button">1 jour</a>
+            <a href="/question?delai=3j" class="btn btn-lg btn-block btn-warning" role="button">3 jours</a>
+            <a href="/question?delai=1s" class="btn btn-lg btn-block btn-primary" role="button">1 semaine</a>
+            <a href="/question?delai=2s" class="btn btn-lg btn-block btn-info" role="button">2 semaines</a>
+            <a href="/question?delai=1m" class="btn btn-lg btn-block btn-default" role="button">1 mois</a>
+            <a href="/question?delai=3m" class="btn btn-lg btn-block btn-success" role="button">3 mois</a>
+        </div>
+
+        <p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle btn-lg btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Jamais <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="/question?delai=n">Confirmation</a></li>
+                </ul>
+            </div>
+        </p>
+    </div>
+
+</div><!-- /.container -->
+
+
+</body>
+</html>
