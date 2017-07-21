@@ -37,6 +37,9 @@ public class HelloController {
             long tempsAajouter = calculerTempsAajouter(delai);
             // Mise à jour du délai de répétition de la question en base
             pageRepository.updateQuestionTime(data, tempsAajouter);
+            // Ajout de cet historique en base dans quizz_histo
+            pageRepository.addHisto(data, delai);
+            data.getPageList().remove(0);
         }
 
         if(data.getPageList().size() == 0){
@@ -50,6 +53,7 @@ public class HelloController {
 
     @RequestMapping("/evaluation")
     public String evaluation(Model model) {
+        pageRepository.recupererHisto(data);
         return "evaluation";
     }
 

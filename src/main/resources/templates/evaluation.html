@@ -35,6 +35,22 @@
 
     <div class="starter-template">
         <h3>Evaluation :</h3>
+        <div id="horizon">
+            <span th:if="${@data.getHistoList().size() != 0}">
+                <span th:each="histo,iter : ${@data.getHistoList()}">
+                    <span th:switch="${histo}">
+                      <span th:case="1"><button type="button" class="btn btn-lg btn-danger disabled">1 jour</button></span>
+                      <span th:case="2"><button type="button" class="btn btn-lg btn-warning disabled">3 jours</button></span>
+                      <span th:case="3"><button type="button" class="btn btn-lg btn-primary disabled">1 semaine</button></span>
+                      <span th:case="4"><button type="button" class="btn btn-lg btn-info disabled">2 semaines</button></span>
+                      <span th:case="5"><button type="button" class="btn btn-lg btn-default disabled">1 mois</button></span>
+                      <span th:case="6"><button type="button" class="btn btn-lg btn-success disabled">3 mois</button></span>
+                      <span th:case="7"><button type="button" class="btn btn-lg btn-default disabled">Jamais</button></span>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <br/>
         <div class="bd-example" data-example-id="">
             <a href="/question?delai=1j" class="btn btn-lg btn-block btn-danger" role="button">1 jour</a>
             <a href="/question?delai=3j" class="btn btn-lg btn-block btn-warning" role="button">3 jours</a>

@@ -5,3 +5,9 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+#horizon {
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}

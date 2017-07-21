@@ -19,7 +19,9 @@ import java.util.List;
 public class Data {
 
     String name;
+    // Liste des pages qui vont être présentées à l'utilisateur
     static List<Page> pageList = new ArrayList<>();
+    static List<Integer> histoList = new ArrayList<>();
 
     public Data() {
     }
@@ -46,5 +48,17 @@ public class Data {
 
     public void calculerChemin(PageRepository pageRepository) {
         pageList = pageRepository.computeChemin(pageList);
+    }
+
+    public static List<Integer> getHistoList() {
+        return histoList;
+    }
+
+    public void setHistoList(List<Integer> histoList) {
+        Data.histoList = histoList;
+    }
+
+    public void recupererHisto() {
+
     }
 }

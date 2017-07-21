@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +45,6 @@ public class PageRepository {
 
     public void updateQuestionTime(Data data, long tempsAajouter) {
         Page page = data.getPageList().get(0);
-        data.getPageList().remove(0);
 
         // Calcul du temps à mettre à jour
         Timestamp timestampActuelTS = new Timestamp(System.currentTimeMillis());
@@ -91,5 +91,34 @@ public class PageRepository {
 
         retour.get(0).setChemin(cheminCalcule);
         return retour;
+    }
+
+    public void addHisto(Data data, String delai) {
+        Page page = data.getPageList().get(0);
+
+        Timestamp timestampActuelTS = new Timestamp(System.currentTimeMillis());
+        long timestampActuel = timestampActuelTS.getTime()/1000;
+
+        jdbcTemplate.update(
+                "INSERT INTO quizz_histo (CONTENTID, DUREE, TIMESTAMP) VALUES (?, ?, ?)",
+                new Object[]{page.getContent_id(), Tool.calculerIdentifiantDelai(delai), timestampActuel}
+        );
+    }
+
+    public void recupererHisto(Data data) {
+        Page page = data.getPageList().get(0);
+
+        String requete = "SELECT DUREE FROM quizz_histo " +
+                "WHERE CONTENTID = " + page.getContent_id() + " " +
+                "order by TIMESTAMP desc";
+
+        List<Integer> resultList = jdbcTemplate.query(
+                requete,
+                (rs, rowNum) -> {
+                    return new Integer(rs.getString("quizz_histo.DUREE"));
+                }
+        );
+
+        data.setHistoList(resultList);
     }
 }
