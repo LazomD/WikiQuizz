@@ -45,8 +45,9 @@ public class Page {
     }
 
     public String getUrl() {
-        return "http://164.132.43.182:8090/display/QUIZ/" + url;
+        return "http://164.132.43.182:8090/pages/viewpage.action?pageId=" + content_id;
     }
+    //http://164.132.43.182:8090/pages/viewpage.action?pageId=983222
 
     public void setUrl(String url) {
         this.url = url;
