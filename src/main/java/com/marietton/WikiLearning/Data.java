@@ -22,6 +22,7 @@ public class Data {
     // Liste des pages qui vont être présentées à l'utilisateur
     static List<Page> pageList = new ArrayList<>();
     static List<Integer> histoList = new ArrayList<>();
+    static List<Etiquette> listEtiquette = new ArrayList<>();
 
     public Data() {
     }
@@ -60,5 +61,13 @@ public class Data {
 
     public void recupererHisto() {
 
+    }
+
+    public static List<Etiquette> getListEtiquette() {
+        return listEtiquette;
+    }
+
+    public void setListEtiquette(List<Etiquette> listEtiquette) {
+        Data.listEtiquette = listEtiquette;
     }
 }

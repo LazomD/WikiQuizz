@@ -1,3 +1,9 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #EFE0DC;
+}
+
 body {
   padding-top: 50px;
 }
@@ -6,8 +12,71 @@ body {
   text-align: center;
 }
 
+.starter-template h1 {
+    font-family: "Jost*", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.navbar {
+    font-family: "Jost*", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.lead {
+    font-family: "Jost*", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.btn {
+    font-family: "Jost*", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.compteur {
+    text-shadow: #9d9d9d 1px 1px, #9d9d9d -1px 1px, #9d9d9d -1px -1px, #9d9d9d 1px -1px;
+}
+
 #horizon {
     width: auto;
     overflow-x: auto;
     white-space: nowrap;
+}
+
+.bg {
+    /* The image used */
+
+    /* Full height */
+    height: 100%;
+    width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Large desktop */
+@media screen and (min-width: 1200px) {
+    .bg {
+        background-image: url("https://source.unsplash.com/random/1920x1080");
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media screen and (min-width: 768px) and (max-width: 979px) {
+    .bg {
+        background-image: url("https://source.unsplash.com/random/1080x1080");
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media screen and (max-width: 767px) {
+    .bg {
+        background-image: url("https://source.unsplash.com/random/760x760");
+    }
+}
+
+/* Landscape phones and down */
+@media screen and (max-width: 480px) {
+    .bg {
+        background-image: url("https://source.unsplash.com/random/412x732");
+    }
 }

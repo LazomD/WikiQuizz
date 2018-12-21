@@ -1,5 +1,6 @@
 package com.marietton.WikiLearning;
 
+import com.marietton.WikiLearning.Controller.HelloController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ import java.util.List;
 @Repository
 public class PageRepository {
 
-    static final int labelID = 655362;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -29,7 +30,7 @@ public class PageRepository {
         String requete = "select * from CONTENT " +
                 "LEFT OUTER JOIN CONTENT_LABEL on CONTENT.CONTENTID = CONTENT_LABEL.CONTENTID " +
                 "left outer join quizz_time on quizz_time.CONTENTID = CONTENT.CONTENTID " +
-                "where CONTENT_LABEL.LABELID = " + labelID + " " +
+                "where CONTENT_LABEL.LABELID = " + HelloController.labelID + " " +
                 "and (quizz_time.TIMESTAMP < " + timestampActuel + " or quizz_time.CONTENTID is null) " +
                 "and CONTENT.TITLE IS NOT NULL " +
                 "order by quizz_time.TIMESTAMP ASC";
@@ -120,5 +121,21 @@ public class PageRepository {
         );
 
         data.setHistoList(resultList);
+    }
+
+    public List<Etiquette> getListeEtiquettes() {
+
+        String requete = "SELECT LABEL.LABELID, LABEL.NAME  FROM LABEL ";
+
+        List<Etiquette> resultList = jdbcTemplate.query(
+                requete,
+                (rs, rowNum) -> {
+                    return new Etiquette(
+                            Integer.parseInt(rs.getString("LABEL.LABELID")),
+                            rs.getString("LABEL.NAME"));
+                }
+        );
+
+        return resultList;
     }
 }

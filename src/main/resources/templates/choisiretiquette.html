@@ -7,7 +7,7 @@
     <!-- Latest compiled and minified CSS -->
 
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
-          rel="stylesheet" media="screen"/>
+           rel="stylesheet" media="screen"/>
     <link rel="stylesheet" type="text/css" media="all"
           href="../static/css/style.css" th:href="@{/css/style.css}" />
     <!-- Optional theme -->
@@ -24,24 +24,27 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
             <a class="navbar-brand" href="/">WikiQuizz</a>
-            <a class="navbar-brand" href="/choisiretiquette">Admin</a>
         </div>
     </div>
 </nav>
 
-<div class="container bg">
+<div class="container">
 
     <div class="starter-template">
-        <h1>Bienvenue sur le WikiQuizz</h1>
-        <p th:if="${@data.getPageList().size() != 0}" class="lead">Vous avez <strong><span class="compteur" th:text="${@data.getPageList().size()}"></span></strong> articles à réviser !</p>
-        <p th:if="${@data.getPageList().size() != 0}">
-            <a class="btn btn-lg btn-primary" href="/question" role="button">Start</a>
-        </p>
-        <p th:if="${@data.getPageList().size() == 0}" class="lead">Vous n'avez pas d'article à réviser pour l'instant!</p>
+
+        <tr th:each="etiquette : ${@data.getListEtiquette()}">
+            <a class="btn btn-lg btn-primary" th:href="@{/administration?label={lab}(lab=${etiquette.id})}" role="button">
+                <span th:text="${etiquette.label}"></span>
+            </a>
+        </tr>
     </div>
 
-    <!--<img src="https://source.unsplash.com/9l_326FISzk" class="img-responsive" style="display: block;"/>-->
 </div><!-- /.container -->
+
+
 </body>
 </html>
