@@ -45,9 +45,8 @@ public class Page {
     }
 
     public String getUrl() {
-        return "http://51.75.124.234:8090/pages/viewpage.action?pageId=" + content_id;
+        return "http://outils.moz-technologie.fr:8090/pages/viewpage.action?pageId=" + content_id;
     }
-    //http://51.75.124.234:8090/pages/viewpage.action?pageId=983222
 
     public void setUrl(String url) {
         this.url = url;
